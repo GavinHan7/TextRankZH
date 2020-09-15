@@ -1,6 +1,8 @@
 package convert
 
-import "unicode/utf8"
+import (
+	"unicode/utf8"
+)
 
 // Language interface and its methods make possible the polimorf usage of
 // language specific features by custom implementations.
@@ -38,7 +40,7 @@ func NewLanguage() *LanguageDefault {
 // IsStopWord method retrieves true when the given word is in the stop word
 // list or when the word has less character then 2.
 func (lang *LanguageDefault) IsStopWord(word string) bool {
-	if utf8.RuneCountInString(word) <= 2 {
+	if utf8.RuneCountInString(word) < 2 {
 		return true
 	}
 
